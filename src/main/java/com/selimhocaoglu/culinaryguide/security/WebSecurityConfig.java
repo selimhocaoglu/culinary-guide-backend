@@ -46,7 +46,7 @@ public class WebSecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
-                                .requestMatchers("/users/**", "/recipes/**").permitAll()
+                                .requestMatchers("/users/**", "/recipes/**", "/user-recipes/**").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->

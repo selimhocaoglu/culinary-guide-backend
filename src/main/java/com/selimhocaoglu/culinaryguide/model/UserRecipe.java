@@ -1,5 +1,6 @@
 package com.selimhocaoglu.culinaryguide.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -21,12 +22,17 @@ public class UserRecipe {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
+    @Column(name = "meal_type", nullable = false)
+    private String mealType;
+
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties("userRecipes")
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "recipe_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties("userRecipes")
     private Recipe recipe;
 
     public Long getId() {
@@ -67,5 +73,21 @@ public class UserRecipe {
 
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
+    }
+
+    public String getMealType() {
+        return mealType;
+    }
+
+    public void setMealType(String mealType) {
+        this.mealType = mealType;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

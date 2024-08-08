@@ -22,6 +22,10 @@ public class RecipeService {
         return recipeRepository.findById(id).orElse(null);
     }
 
+    public List<Recipe> getRecipesByCategory(String category){
+        return recipeRepository.findByCategory(category);
+    }
+
     public Recipe saveRecipe(Recipe recipe){
         return recipeRepository.save(recipe);
     }

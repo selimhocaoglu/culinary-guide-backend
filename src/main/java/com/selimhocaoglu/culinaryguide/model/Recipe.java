@@ -20,6 +20,9 @@ public class Recipe {
     @Column(name = "instructions", nullable = false)
     private String instructions;
 
+    @Column(name = "category", nullable = false)
+    private String category;
+
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserRecipe> userRecipes;
 
@@ -56,6 +59,14 @@ public class Recipe {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public List<UserRecipe> getUserRecipes() {

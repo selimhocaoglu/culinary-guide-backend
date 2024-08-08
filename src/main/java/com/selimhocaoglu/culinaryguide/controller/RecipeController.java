@@ -29,4 +29,9 @@ public class RecipeController {
     public Recipe saveRecipe(@RequestBody Recipe recipe){
         return recipeService.saveRecipe(recipe);
     }
+
+    @GetMapping("/by-category")
+    public List<Recipe> getRecipesByCategory(@RequestParam String category){
+        return recipeService.getRecipesByCategory(category);
+    }
 }
